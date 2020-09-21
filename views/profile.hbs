@@ -1,0 +1,58 @@
+<nav>
+    <a href="/users/login/">Login</a>
+    <a href="/users/logout/">Logout</a>
+    <a href="/posts/create/">Create Post</a>
+    {{#if userAccess}}
+    <a href="/users/admin/">View Users</a>
+    {{/if}}
+</nav>
+<h1>Welcome</h1>
+<div>
+    <h1> {{FirstName}} {{LastName}}</h1>
+    <h1>Username: {{Username}}</h1>
+    {{#if userAccess}}
+    <nav>
+       <a href="/users/admin/">View Users</a> 
+    </nav>
+    {{/if}}
+</div>
+<h1>Make a post!</h1>
+<form action="/posts/create" method="POST">
+    <div>
+        <label for="PostTitle">Post Title: </label>
+        <input type="text" name="PostTitle">
+    </div>
+    <div>
+        <label for="PostBody">Post Body: </label>
+        <input type="text" name="PostBody">
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+
+<hr>
+<h1>My posts</h1>
+{{#each posts}}
+<h2>Title: {{PostTitle}}</h2>
+<p>Details:{{PostBody}}</p>
+<hr>
+<h1>Update Post</h1>
+<form method="POST" action="/posts/update/{{PostId}}">
+<div>
+     <label for="name">Post Title</label>
+     <input type="text" name="PostTitle" required>
+</div>
+<div>
+     <label for="name">Post Body</label>
+     <input type="text" name="PostBody" required>
+</div>
+<div>
+     <button method="POST" action="/posts/update/{{PostId}}">Update</button>
+</div>
+</form>
+<form method="POST" action="/posts/delete/{{PostId}}">
+<button type="submit">delete</button>
+</form>
+{{/each}}
+

@@ -1,0 +1,12 @@
+<nav>
+     <a href="/posts/create/">Create Post</a>
+     <a href="/users/profile/">Back</a>
+     <a href="/users/logout/">Logout</a>
+</nav>
+{{#each users}}
+<a href="/users/admin/editUser/{{UserId}}">View</a>
+<br>{{FirstName}} {{LastName}}<br>
+ <form method="POST" action="/users/delete/{{UserId}}">
+<button method="POST" action="/users/delete/{{UserId}}">Delete</button>
+</form>
+{{/each}}

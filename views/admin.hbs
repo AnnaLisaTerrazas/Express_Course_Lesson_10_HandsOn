@@ -1,0 +1,26 @@
+<nav>
+     <a href="/users/profile/">Back</a>
+     <a href="/posts/create/">Create Post</a>
+     <a href="/users/logout/">Logout</a>
+     {{#if userAccess}}
+     <a href="/users/users/">View Users</a>
+     {{/if}}
+</nav>
+<div>
+     <h2>Welcome {{user.FirstName}} {{user.LastName}}</h2>
+     <h3>Username {{user.Username}}</h3>
+     {{#if userAccess}} 
+     <nav>
+          <a href="/users/users/">View Users</a>
+     </nav>
+     {{/if}}
+</div>
+<hr>
+{{#each usersPosts}}
+<h2>Post By: {{Username}}</h2>
+{{#each posts}}
+<h3>Title: {{PostTitle}}</h3>
+<h3>Details: {{PostBody}}</h3>
+{{/each}}
+<br>
+{{/each}}
